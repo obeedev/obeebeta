@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>[obee]</title>
+    <link href="http://google-developers.appspot.com/maps/documentation/javascript/examples/default.css" rel="stylesheet">
+
+    <!-- If you are in China, you may need to use theis site for the Google Maps code
+    <script src="http://maps.google.cn/maps/api/js" type="text/javascript"></script> -->
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer_compiled.js"></script>
+    <script src="where.js"></script>
+    <script>
+
+      function initialize() {
+        alert("Welcome to [obee] Map Information Screen");
+        var myLatlng = new google.maps.LatLng(37.8345277,28.2704744,)
+        var mapOptions = {
+          zoom: 5,
+          center: myLatlng,
+          mapTypeId: 'satellite'
+        }
+        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+        i = 0;
+        var markers = [];
+        for ( pos in myData ) {
+            i = i + 1;
+            var row = myData[pos];
+		    window.console && console.log(row);
+            // if ( i < 3 ) { alert(row); }
+            var newLatlng = new google.maps.LatLng(row[0], row[1]);
+            var marker = new google.maps.Marker({
+                position: newLatlng,
+                map: map,
+                title: row[2]
+            });
+            markers.push(marker);
+        }
+      }
+    </script>
+  </head>
+  <body onload="initialize()">
+<div id="map_canvas" style="height: 600px"></div>
+<p><b>[obee] Map Information Screen</b></p>
+<p>About Map:</p>
+<p>This map(beta) shows the satellite images of the areas where the device is working.</p>
+<p> * Obtained from GPS information received from the device in marked areas.</p>
+<p><b>created by </b><a href="https://spark.adobe.com/page/TE7tWhUApZeNz/">[obee]</a> dev_team</p>
+<p><b>powered by </b><a href="https://iot.eclipse.org/"> Eclipse</a>.</p>
+</p>
+</body>
+</html>
