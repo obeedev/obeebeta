@@ -18,7 +18,7 @@ class obeeUi(QMainWindow):
             self.mediaplayer = self.instance.media_player_new()
 
             self.MainUi()
-            #self.MapLayer()
+            ##self.MapLayer()
             self.temelmenubar()
             self.isPaused = False
             self.openQ()
